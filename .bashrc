@@ -154,11 +154,11 @@ complete -F _grails grails
 
 # TODO.TXT
 
-export TODO_FILE='/home/leandro/TODO/todo.txt'
+export TODO_FILE='/home/leandro/Workspace/Git/todo/todo.txt'
 export TODOTXT_DEFAULT_ACTION=ls
 # export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
 export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort'
-export PATH=$PATH:"/home/leandro/TODO/"
+export PATH=$PATH:"/home/leandro/Workspace/Git/todo/"
 alias td='todo.sh -d /home/leandro/.todo/config'
 alias tdc='todo.sh -d /home/leandro/.todo/config lsc'
 alias tdprj='todo.sh -d /home/leandro/.todo/config lsprj'
