@@ -156,10 +156,15 @@ complete -F _grails grails
 
 export TODO_FILE='/home/leandro/TODO/todo.txt'
 export TODOTXT_DEFAULT_ACTION=ls
-export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
+# export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
+export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort'
+export PATH=$PATH:"/home/leandro/TODO/"
 alias td='todo.sh -d /home/leandro/.todo/config'
-PATH=$PATH:"/home/leandro/TODO/"
+alias tdc='todo.sh -d /home/leandro/.todo/config lsc'
+alias tdprj='todo.sh -d /home/leandro/.todo/config lsprj'
+alias tdadd='todo.sh -d /home/leandro/.todo/config add'
 alias tdstart='python /home/leandro/Workspace/Git/punch/Punch.py in'
+alias tdclock='while true; do sleep 10 && tdstatus; done'
 alias tdstatus='python /home/leandro/Workspace/Git/punch/Punch.py what'
 alias tdstop='python /home/leandro/Workspace/Git/punch/Punch.py out'
 alias tdreport='python /home/leandro/Workspace/Git/punch/Punch.py report'
