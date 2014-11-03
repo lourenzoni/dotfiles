@@ -151,6 +151,7 @@ _grails() {
 
 complete -F _grails grails
 
+alias cmds='cat ~/Documentos/comandos.txt | more'
 
 # TODO.TXT
 
