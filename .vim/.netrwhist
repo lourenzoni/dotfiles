@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/domain/vigilanciareservatorio'
 let g:netrw_dirhist_2='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/services'
 let g:netrw_dirhist_3='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/services/vigilanciareservatorio'
+let g:netrw_dirhist_4='/home/leandro/.local/share/gnome-shell/extensions/arrow-key-window-selector@tanwald.net'
+let g:netrw_dirhist_5='/home/leandro/.local/share/gnome-shell/extensions/unitylike-hotkey@webgyerek.net'
