@@ -16,6 +16,7 @@ set smartindent
 " BUSCA
 set hlsearch
 set incsearch
+" set ic
 
 " ARQUIVOS
 filetype detect
@@ -39,8 +40,6 @@ iabbrev mysign Leandro Lourenzoni<CR>Analista de Sistemas<CR>Solucoes de Negocio
 "autocmd bufwritepost * call system("ctags -r")
 
 " MAPEAMENTOS
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
 map <F7> :setfiletype html<CR>
 map <F8> :nohls<CR>
 noremap <F12> <Esc>:syntax sync fromstart<CR>
@@ -50,6 +49,8 @@ set pastetoggle=<F5>
 " nnoremap <C-p> :bprevious<CR>:redraw<CR>:ls<CR>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 " nnoremap <space> za
 " vnoremap <space> zf
  
@@ -115,3 +116,5 @@ let @w="'<O/*'>o*/k>'<"
 
 " z: descomenta bloco
 let @z="'<dd'>ddk<'<"
+
+set thesaurus+=/home/leandro/.vim/mthesaur.txt

@@ -112,6 +112,9 @@ fi
 
 # LEANDRO
 
+# Permitir CTRL-s para forward search no bash
+stty -ixon
+
 # CNTLM Proxy (/etc/cntlm.conf)
 export http_proxy=http://127.0.0.1:1234
 export https_proxy=https://127.0.0.1:1234
@@ -119,6 +122,10 @@ export ftp_proxy=http://127.0.0.1:1234
 export HTTP_PROXY=http://127.0.0.1:1234
 export HTTPS_PROXY=https://127.0.0.1:1234
 export FTP_PROXY=http://127.0.0.1:1234
+
+# Usuario e senha para scripts do Jira
+export user=uq4x
+export password=senhaP99
 
 # GIT PROXIES
 #git config --global http.proxy http://localhost:1234

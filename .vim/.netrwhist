@@ -1,9 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/domain/vigilanciareservatorio'
-let g:netrw_dirhist_2='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/services'
-let g:netrw_dirhist_3='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/services/vigilanciareservatorio'
-let g:netrw_dirhist_4='/home/leandro/Workspace/Git'
-let g:netrw_dirhist_5='/home/leandro/Workspace/Git/VigilanciaReservatorio'
-let g:netrw_dirhist_6='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app'
-let g:netrw_dirhist_7='/home/leandro/Workspace/Git/VigilanciaReservatorio/grails-app/views'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/leandro/SNEP/acessos'
+let g:netrw_dirhist_2='/home/leandro/SNEP/jira'
+let g:netrw_dirhist_3='/home/leandro/SNEP'
+let g:netrw_dirhist_4='/home/leandro/SNEP/acessos'
