@@ -1,11 +1,13 @@
 " PLUGINS
+filetype on
 filetype plugin on
+filetype indent on
 set nocompatible
 runtime macros/matchit.vim
 
 " LINHA
 set number
-set foldmethod=manual
+set foldmethod=indent
 
 " TABULACAO
 set ts=4
