@@ -1,0 +1,220 @@
+" Parcel bundler
+set backupcopy=yes
+
+" TSUQUYOMI
+let g:tsuquyomi_javascript_support=1
+let g:tsuquyomi_use_local_typescript=0
+let g:tsuquyomi_use_dev_node_module=1
+let g:tsuquyomi_nodejs_path="/usr/bin/node"
+let g:tsuquyomi_disable_quickfix=1
+let g:tsuquyomi_auto_open=1
+let g:tsuquyomi_use_vimproc=0
+let g:tsuquyomi_completion_detail=1
+
+autocmd FileType javascript,javascript.jsx,typescript setlocal omnifunc=tsuquyomi#complete
+"autocmd FileType javascript,javascript.jsx,typescript setlocal completeopt-=menu
+autocmd FileType javascript,javascript.jsx,typescript setlocal completeopt+=menu,preview
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>q :TsuQuickFix<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>f :TsuSearch 
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>r :TsuquyomiRenameSymbol<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>R :TsuquyomiRenameSymbolC<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <C-h> : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>i :TsuImport<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>l :TsuReferences<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>o :TsuquyomiReloadProject<CR>
+"autocmd CursorMoved *  : <C-u>echo tsuquyomi#hint()<CR>
+
+
+" ALE
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver', 'tslint'],
+\   'vue': ['eslint']
+\}
+let g:ale_fixers = {
+\    'javascript': ['eslint'],
+\    'typescript': ['prettier'],
+\    'vue': ['eslint'],
+\    'scss': ['prettier'],
+\    'html': ['prettier']
+\}
+let g:ale_fix_on_save = 0
+let g:ale_lint_on_save = 0
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>t :ALEToggle<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>x :ALEFix<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>j :ALENext<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>k :ALEPrevious<CR>
+autocmd FileType javascript,javascript.jsx,typescript nmap <leader>d :ALEDetail<CR>
+
+" VIM-JAVASCRIPT
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "⍁"
+let g:javascript_conceal_underscore_arrow_function = "⍂"
+set conceallevel=0
+"syntax match Entity "\"" conceal cchar=§ 
+map <leader>c :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+let g:vim_jsx_pretty_colorful_config=1
+
+
+" PRETTIER
+autocmd FileType javascript,javascript.jsx,typescript setlocal formatprg=prettier\ --parser\ typescript
+let g:prettier#config#print_width = 50
+let g:prettier#config#tab_width = 2
+let g:prettier#config#semi = 'false'
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'true'
+let g:prettier#config#arrow_parens = 'avoid'
+let g:prettier#config#trailing_comma = 'all'
+nmap <leader>p :Prettier<CR>zx
+
+
+" VIM-SLIME - Enviar codigo para repl
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+
+" PLUGINS USAGE
+execute pathogen#infect()
+
+filetype plugin on
+filetype plugin indent on
+set nocompatible
+runtime macros/matchit.vim
+
+" LINHA
+set number
+set foldmethod=indent
+set foldopen-=search
+function! NextClosedFold(dir)
+    let cmd = 'norm!z' . a:dir
+    let view = winsaveview()
+    let [l0, l, open] = [0, view.lnum, 1]
+    while l != l0 && open
+        exe cmd
+        let [l0, l] = [l, line('.')]
+        let open = foldclosed(l) < 0
+    endwhile
+    if open
+        call winrestview(view)
+    endif
+endfunction
+
+" TABULACAO
+""set tabstop=4
+""set shiftwidth=4
+""set autoindent
+""set smartindent
+""set expandtab
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 autoindent smartindent noexpandtab
+
+
+" BUSCA
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" ARQUIVOS
+filetype detect
+syntax on
+set hidden
+
+" COLORS
+set t_Co=256
+let g:solarized_termcolors=256
+"colorscheme solarized
+"colorscheme leandro
+"colorscheme iceberg
+colorscheme spacecamp
+
+" BRACKETS
+let g:rainbow_active=0
+let g:rainbow_ctermfgs = [77, 78, 79, 80, 81, 82]
+
+" GRAILS
+set path+=grails-app/**
+set path+=web-app/**
+set path+=src/**
+set path+=server/**
+set path+=test/**
+
+" IDIOMA
+"set spell spelllang=pt
+"set dictionary+=/usr/share/dict/words
+set thesaurus+=/home/leandro/.vim/thesaurus/mthesaur.txt
+
+" ABREVIACOES
+iabbrev myemail leandro.lourenzoni@gmail.com
+iabbrev mysign Leandro Lourenzoni<CR>Analista de Sistemas<CR>Solucoes de Negocio do E&P
+
+" MAPEAMENTOS
+map <F7> :setfiletype html<CR>
+map <F8> :nohls<CR>
+nmap <leader>z :bu #<CR>:bd #<CR>
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+set pastetoggle=<F5>
+"set paste
+
+" COMANDOS FREQUENTES
+map <leader>w :w !diff - %<CR>
+map <leader>\ :normal 0i//<CR>
+map <leader>\| :s/\/\/<CR><F8>
+map <leader>" :normal I"<CR>
+map <leader># :normal I#<CR>
+map <leader>s :vim //j ## \| copen<CR>
+map <leader>a :args src/**/*.js*<CR>
+map <leader>6 <C-^>
+map <leader>za zaVzCzazz
+nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
+nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
+
+" NODE REPL VIM-SLIME
+"map <C-l> i<ESC>v<C-c><C-c>u<C-o>zz
+"map <C-J> ggVG<C-c><C-c><C-o><C-o>zz
+map <C-l> mli<ESC>v<C-c><C-c>u'l
+map <C-J> mjggVG<C-c><C-c>'j
+
+ 
+" SEARCH SELECTION
+vnoremap <silent> * :<C-U>
+   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+   \gvy/<C-R><C-R>=substitute(
+   \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+   \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+   \gvy?<C-R><C-R>=substitute(
+   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+   \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" NETRW
+let g:netrw_altv=1
+let g:netrw_preview=1
+let g:netrw_keepdir=0
+map <leader>n :exec g:netrw_keepdir ? "let g:netrw_keepdir=0<Bar>echo g:netrw_keepdir" : "let g:netrw_keepdir=1<Bar>echo g:netrw_keepdir"<CR>
+
+
+" MACROS
+
+" JIRA EMAIL MARKDOWN
+let @j="\"+pGo{quote}ggO{code}/Assuntoo{code}{quote}ggVG\"+y"
+
+
