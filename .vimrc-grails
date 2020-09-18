@@ -18,7 +18,8 @@ set smartindent
 " BUSCA
 set hlsearch
 set incsearch
-" set ic
+set ignorecase
+set smartcase
 
 " ARQUIVOS
 filetype detect
