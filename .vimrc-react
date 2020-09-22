@@ -67,7 +67,7 @@ let g:vim_jsx_pretty_colorful_config=1
 
 " PRETTIER
 autocmd FileType javascript,javascript.jsx,typescript setlocal formatprg=prettier\ --parser\ typescript
-let g:prettier#config#print_width = 50
+let g:prettier#config#print_width = 60
 let g:prettier#config#tab_width = 2
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
@@ -117,9 +117,6 @@ endfunction
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 autoindent smartindent noexpandtab
-
 
 " BUSCA
 set hlsearch
@@ -177,6 +174,7 @@ set pastetoggle=<F5>
 map <leader>w :w !diff - %<CR>
 map <leader>\ :normal 0i//<CR>
 map <leader>\| :s/\/\/<CR><F8>
+map <leader>/ :normal A //<CR>
 map <leader>" :normal I"<CR>
 map <leader># :normal I#<CR>
 map <leader>s :vim //j ## \| copen<CR>
@@ -208,7 +206,7 @@ vnoremap <silent> # :<C-U>
 " NETRW
 let g:netrw_altv=1
 let g:netrw_preview=1
-let g:netrw_keepdir=0
+let g:netrw_keepdir=1
 map <leader>n :exec g:netrw_keepdir ? "let g:netrw_keepdir=0<Bar>echo g:netrw_keepdir" : "let g:netrw_keepdir=1<Bar>echo g:netrw_keepdir"<CR>
 
 
@@ -218,3 +216,10 @@ map <leader>n :exec g:netrw_keepdir ? "let g:netrw_keepdir=0<Bar>echo g:netrw_ke
 let @j="\"+pGo{quote}ggO{code}/Assuntoo{code}{quote}ggVG\"+y"
 
 
+au BufRead,BufNewFile *.js   syntax match StrikeoutMatch /\/\/.*\/\//   
+hi def  StrikeoutColor   ctermbg=darkgreen ctermfg=black    guibg=darkgreen guifg=green
+hi link StrikeoutMatch StrikeoutColor
+
+au BufRead,BufNewFile *.js   syntax match StrikeoutMatch2 /\/\/.*[^\/]\/$/
+hi def  StrikeoutColor2   ctermbg=darkred ctermfg=black    guibg=darkred guifg=red
+hi link StrikeoutMatch2 StrikeoutColor2
